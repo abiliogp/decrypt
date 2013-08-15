@@ -7,12 +7,12 @@ import java.util.TreeMap;
 
 public class Decrypt {
 
-    private static TreeMap<String, String> trieMd5 = new TreeMap<String, String>(); 
+    static TreeMap<String, String> trieMd5 = new TreeMap<String, String>(); 
 	
-    private static String vocais = "aeiou";
-	private static String consoantes = "bcdfghjklmnpqrstvwxyz";
-	private static String numeros = "0123456789";
-	private static String extras ;//= "!@#$%&*()_-+=[]{}?/\|><";
+    static String vocais = "aeiou";
+	static String consoantes = "bcdfghjklmnpqrstvwxyz";
+	static String numeros = "0123456789";
+	static String extras ;//= "!@#$%&*()_-+=[]{}?/\|><";
 	
     private static void loadMd5(String inputFileName) throws IOException{
     	String line;
