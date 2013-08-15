@@ -9,6 +9,11 @@ public class Decrypt {
 
     private static TreeMap<String, String> trieMd5 = new TreeMap<String, String>(); 
 	
+    private static String vocais = "aeiou";
+	private static String consoantes = "bcdfghjklmnpqrstvwxyz";
+	private static String numeros = "0123456789";
+	private static String extras ;//= "!@#$%&*()_-+=[]{}?/\|><";
+	
     private static void loadMd5(String inputFileName) throws IOException{
     	String line;
 		BufferedReader bf = new BufferedReader(new FileReader(inputFileName));
@@ -25,6 +30,8 @@ public class Decrypt {
 	public static void main(String[] args) throws IOException {
 		loadMd5("md5");
 		System.out.println("Trie MD5 size " + trieMd5.size());
+		Alfa1 alfa = new Alfa1(4);
+		alfa.geraSeq();
 	}
 
 }
