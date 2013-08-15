@@ -3,6 +3,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.TreeMap;
 
 public class Decrypt {
@@ -22,19 +25,30 @@ public class Decrypt {
             trieMd5.put(line, "");
         }
     }
+    
+    public static void findHash(String str) throws NoSuchAlgorithmException{
+    	MessageDigest md = MessageDigest.getInstance("MD5");  
+    	BigInteger hash = new BigInteger(1, md.digest(str.getBytes()));  
+    	String key = hash.toString(16);  
+    	 
+    	//System.out.println(str);
+    	if(trieMd5.containsKey(key)){    		
+    		System.out.println("Achou " + str + " hash " +  key); 
+    	}
+    }
 
     /**
      * @param args
      * @throws IOException
+     * @throws NoSuchAlgorithmException 
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
         loadMd5("md5");
         System.out.println("Trie MD5 size " + trieMd5.size());
-        System.out.print("teste"+alfabeto+"\n");
+        //System.out.print("teste"+alfabeto+"\n");
        //Alfa1 alfa = new Alfa1(4);
         //alfa.geraSeq();
         RandomicaSufixo rand = new RandomicaSufixo(6);
         rand.geraSeq();
-        
     }
 }
